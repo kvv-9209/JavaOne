@@ -1,17 +1,19 @@
 package lesson3;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class HomeWork3 {
 
     public static void main(String[] args) {
-        reverseValueInArray();
-        fillEmptyArray();
-        multipleNumbers();
-        arrayFillDiagonalElementsUnits();
-        returnDimArray(10, 15);
-        minMaxElements();
-        sumBordersArray();
+        //reverseValueInArray();
+        // fillEmptyArray();
+        // multipleNumbers();
+        // arrayFillDiagonalElementsUnits();
+        //   returnDimArray(10, 15);
+        //  minMaxElements();
+        //  checkBalance();
+        displaceAllElementsArray(-5);
 
     }
 
@@ -77,7 +79,7 @@ public class HomeWork3 {
         }
     }
 
-    /* 4. Написать метод, принимающий на вход два аргумента: len и initialValue,
+    /* 5. Написать метод, принимающий на вход два аргумента: len и initialValue,
      и возвращающий одномерный массив типа int длиной len, каждая ячейка
      которого равна initialValue*/
     public static int[] returnDimArray(int len, int initialValue) {
@@ -87,7 +89,8 @@ public class HomeWork3 {
         return array;
     }
 
-    /* 5.* Задать одномерный массив и найти в нем минимальный и максимальный элементы*/
+    /* 6.* Задать одномерный массив и найти в нем минимальный и максимальный элементы*/
+    @org.jetbrains.annotations.Contract(pure = true)
     public static int[] minMaxElements() {
         int[] array = new int[]{10, 5, 3, 2, 11, 4, 7, 6, 12, 8, 9, 1};
         int maxElement = 0;
@@ -106,28 +109,63 @@ public class HomeWork3 {
         return array;
     }
 
-    /*6. ** Написать метод, в который передается не пустой одномерный
+    /* 7. ** Написать метод, в который передается не пустой одномерный
  целочисленный массив, метод должен вернуть true, если в массиве
  есть место, в котором сумма левой и правой части массива равны.
  Примеры:
  checkBalance([2, 2, 2, 1, 2, 2, ||| 10, 1]) → true, т.е. 2 + 2 + 2 + 1 + 2 + 2 = 10 + 1
  checkBalance([1, 1, 1, ||| 2, 1]) → true, т.е. 1 + 1 + 1 = 2 + 1
  граница показана символами |||, эти символы в массив не входят и не имеют никакого отношения к ИЛИ.*/
-    public static boolean sumBordersArray() {
-        int[] array = new int[]{2, 2, 2, 1, 2, 2, 10, 1};
-        for (int i = 0, j = array.length - 1; i < j; i++, j--) {
-            if (array[i] == array[j]) {
+    public static boolean checkBalance() {
+        int[] array = new int[]{2, 2, 2, 1, 2, 2, 2, 1};
+        int leftBorder = 0;
+        int rightBorder = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            leftBorder += array[i];
+        }
+        for (int j = array.length - 1; true || false; j--) {
+            if (leftBorder == rightBorder) {
                 return true;
-            } else if (array[i] > array[j]) {
-                array[j] += array[j - 1];
-            } else if (array[i] < array[j]) {
-                array[i] += array[i + 1];
+            } else if (leftBorder == 0) {
+                return false;
+            } else {
+                leftBorder -= array[j];
+                rightBorder += array[j];
             }
         }
-        return true;
+    }
+
+    /* 8. *** Написать метод, которому на вход подается одномерный массив
+    и число n (может быть положительным, или отрицательным), при этом
+    метод должен сместить все элементы массива на n позиций.
+    Элементы смещаются циклично. Для усложнения задачи нельзя пользоваться
+    вспомогательными массивами.
+    Примеры: [ 1, 2, 3 ] при n = 1 (на один вправо) -> [ 3, 1, 2 ]; [ 3, 5, 6, 1]
+    при n = -2 (на два влево) -> [ 6, 1, 3, 5 ]. При каком n в какую сторону сдвиг можете выбирать сами.*/
+    public static void displaceAllElementsArray(int n) {
+
+        int[] array = new int[]{3, 5, 6, 1};
+
+        /*Scanner input = new Scanner(System.in); // Объявляем Scanner
+        System.out.println("Введите размер массива: ");
+        int size = input.nextInt(); // Читаем с клавиатуры размер массива и записываем в size
+        int array[] = new int[size]; // Создаём массив int размером в size
+
+        //Пройдёмся по всему массиву, заполняя его
+        for (int i = 0; i < size; i++) {
+            System.out.println("Введите значение для " + (i + 1) + "элемента:");
+            array[i] = input.nextInt(); // Заполняем массив элементами, введёнными с клавиатуры
+        }
+        for (int i = 0; i < size; i++) {
+            System.out.print (" " + array[i]); // Выводим на экран, полученный массив
+        }
+        System.out.println();*/
     }
 
 }
+
+
 
 
 
