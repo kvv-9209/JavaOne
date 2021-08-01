@@ -13,8 +13,8 @@ public class HomeWork3 {
         //   returnDimArray(10, 15);
         //  minMaxElements();
         //  checkBalance();
-        displaceAllElementsArray(-5);
-
+        //displaceAllElementsArray(2);
+        tested(1);
     }
 
 
@@ -90,7 +90,7 @@ public class HomeWork3 {
     }
 
     /* 6.* Задать одномерный массив и найти в нем минимальный и максимальный элементы*/
-    @org.jetbrains.annotations.Contract(pure = true)
+
     public static int[] minMaxElements() {
         int[] array = new int[]{10, 5, 3, 2, 11, 4, 7, 6, 12, 8, 9, 1};
         int maxElement = 0;
@@ -143,11 +143,17 @@ public class HomeWork3 {
     вспомогательными массивами.
     Примеры: [ 1, 2, 3 ] при n = 1 (на один вправо) -> [ 3, 1, 2 ]; [ 3, 5, 6, 1]
     при n = -2 (на два влево) -> [ 6, 1, 3, 5 ]. При каком n в какую сторону сдвиг можете выбирать сами.*/
-    public static void displaceAllElementsArray(int n) {
+    /*public static void displaceAllElementsArray(int n) {
 
-        int[] array = new int[]{3, 5, 6, 1};
+        int[] arr = {3, 5, 6, 1};
 
-        /*Scanner input = new Scanner(System.in); // Объявляем Scanner
+        if(n > 0) {
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] = arr[i + n];
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+        *//* Scanner input = new Scanner(System.in); // Объявляем Scanner
         System.out.println("Введите размер массива: ");
         int size = input.nextInt(); // Читаем с клавиатуры размер массива и записываем в size
         int array[] = new int[size]; // Создаём массив int размером в size
@@ -160,7 +166,27 @@ public class HomeWork3 {
         for (int i = 0; i < size; i++) {
             System.out.print (" " + array[i]); // Выводим на экран, полученный массив
         }
-        System.out.println();*/
+        System.out.println(); *//*
+    }*/
+
+    public static void tested(int n) {
+        int[] arr = {3, 5, 6, 1};
+        int i = 0;
+        while (i < arr.length + n) {
+            int j = arr.length - 1;
+            int buffer = arr[j];
+            while (j < arr.length) {
+                if (j == 0) {
+                    arr[j] = buffer;
+                    break;
+                } else {
+                    arr[j] = arr[j - 1];
+                    j--;
+                }
+            }
+            i++;
+        }
+        System.out.println(Arrays.toString(arr));
     }
 
 }
