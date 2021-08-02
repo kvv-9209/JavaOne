@@ -13,7 +13,7 @@ public class HomeWork3 {
         returnDimArray(10, 15);//Задание 5
         minMaxElements(); //Задание 6*
         checkBalance(); //Задание 7**
-        displaceAllElementsArray(); //Задание ***
+        displaceAllElementsArray(); //Задание 8***
     }
 
 
