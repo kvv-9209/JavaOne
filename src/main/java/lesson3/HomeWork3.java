@@ -6,15 +6,14 @@ import java.util.Scanner;
 public class HomeWork3 {
 
     public static void main(String[] args) {
-        //reverseValueInArray();
-        // fillEmptyArray();
-        // multipleNumbers();
-        // arrayFillDiagonalElementsUnits();
-        //   returnDimArray(10, 15);
-        //  minMaxElements();
-        //  checkBalance();
-        //displaceAllElementsArray(2);
-        tested(1);
+        reverseValueInArray(); //Задание 1
+        fillEmptyArray(); //Задание 2
+        multipleNumbers(); //Задание 3
+        arrayFillDiagonalElementsUnits(); //Задание 4
+        returnDimArray(10, 15);//Задание 5
+        minMaxElements(); //Задание 6*
+        checkBalance(); //Задание 7**
+        displaceAllElementsArray(); //Задание ***
     }
 
 
@@ -143,52 +142,35 @@ public class HomeWork3 {
     вспомогательными массивами.
     Примеры: [ 1, 2, 3 ] при n = 1 (на один вправо) -> [ 3, 1, 2 ]; [ 3, 5, 6, 1]
     при n = -2 (на два влево) -> [ 6, 1, 3, 5 ]. При каком n в какую сторону сдвиг можете выбирать сами.*/
-    /*public static void displaceAllElementsArray(int n) {
-
-        int[] arr = {3, 5, 6, 1};
-
-        if(n > 0) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = arr[i + n];
-            }
-        }
-        System.out.println(Arrays.toString(arr));
-        *//* Scanner input = new Scanner(System.in); // Объявляем Scanner
+    public static void displaceAllElementsArray() {
+        Scanner input = new Scanner(System.in); // Объявляем Scanner
         System.out.println("Введите размер массива: ");
         int size = input.nextInt(); // Читаем с клавиатуры размер массива и записываем в size
         int array[] = new int[size]; // Создаём массив int размером в size
 
-        //Пройдёмся по всему массиву, заполняя его
         for (int i = 0; i < size; i++) {
-            System.out.println("Введите значение для " + (i + 1) + "элемента:");
+            System.out.println("Введите значение для " + (i + 1) + " элемента:");
             array[i] = input.nextInt(); // Заполняем массив элементами, введёнными с клавиатуры
         }
-        for (int i = 0; i < size; i++) {
-            System.out.print (" " + array[i]); // Выводим на экран, полученный массив
-        }
-        System.out.println(); *//*
-    }*/
+        System.out.println(Arrays.toString(array)); // Выводим на экран, полученный массив
 
-    public static void tested(int n) {
-        int[] arr = {3, 5, 6, 1};
-        int i = 0;
-        while (i < arr.length + n) {
-            int j = arr.length - 1;
-            int buffer = arr[j];
-            while (j < arr.length) {
+        System.out.println("Введите значение смещения n: ");
+        int n = input.nextInt(); // Читаем с клавиатуры значение смещения и записываем в n
+
+        for (int i = 0; i < array.length + n; i++) { //Выполняем сортировку в соответствии с заданием
+            int j = array.length - 1;
+            int variable = array[j];
+            for (; j < array.length; j--) {
                 if (j == 0) {
-                    arr[j] = buffer;
+                    array[j] = variable;
                     break;
                 } else {
-                    arr[j] = arr[j - 1];
-                    j--;
+                    array[j] = array[j - 1];
                 }
             }
-            i++;
         }
-        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(array)); // Выводим на экран, полученный массив
     }
-
 }
 
 
